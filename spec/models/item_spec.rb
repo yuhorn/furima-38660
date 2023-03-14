@@ -21,28 +21,28 @@ RSpec.describe Item, type: :model do
           @item.valid?
           expect(@item.errors.full_messages).to include("Item info can't be blank")
         end
-        it "item_category_idが存在しないと出品できない" do
-          @item.item_category_id = ''
+        it "item_category_idが未選択のままだと出品できない" do
+          @item.item_category_id = '1'
           @item.valid?
           expect(@item.errors.full_messages).to include("Item category can't be blank")
         end
-        it "item_sales_status_idが存在しないと出品できない" do
-          @item.item_sales_status_id = ''
+        it "item_sales_status_idが未選択のままだと出品できない" do
+          @item.item_sales_status_id = '1'
           @item.valid?
           expect(@item.errors.full_messages).to include("Item sales status can't be blank")
         end
-        it "item_shipping_fee_idが存在しないと出品できない" do
-          @item.item_shipping_fee_status_id = ''
+        it "item_shipping_fee_idが未選択のままだと出品できない" do
+          @item.item_shipping_fee_status_id = '1'
           @item.valid?
           expect(@item.errors.full_messages).to include("Item shipping fee status can't be blank")
         end
-        it "prefecture_idが存在しないと出品できない" do
-          @item.prefecture_id = ''
+        it "prefecture_idが未選択のままだと出品できない" do
+          @item.prefecture_id = '1'
           @item.valid?
           expect(@item.errors.full_messages).to include("Prefecture can't be blank")
         end
-        it "item_schedule_delivery_idが存在しないと出品できない" do
-          @item.item_schedule_delivery_id = ''
+        it "item_schedule_delivery_idが未選択のままだと出品できない" do
+          @item.item_schedule_delivery_id = '1'
           @item.valid?
           expect(@item.errors.full_messages).to include("Item schedule delivery can't be blank")
         end
@@ -75,6 +75,16 @@ RSpec.describe Item, type: :model do
           @item.item_info = Faker::Lorem.characters(number: 1001)
           @item.valid?
           expect(@item.errors.full_messages).to include("Item info is too long (maximum is 1000 characters)")
+        end
+        it "imageが紐付いていない場合出品できない" do
+          @item.image = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Image can't be blank")
+        end
+        it "userが紐付いていない場合出品できない" do
+          @item.user = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include("User must exist")
         end
       end
     end

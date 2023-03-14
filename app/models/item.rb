@@ -20,13 +20,13 @@ class Item < ApplicationRecord
 
   validates :item_name, length: {maximum: 40}
   validates :item_info, length: {maximum: 1000}
-  VALID_PRICE_REGEX = /\A[0-9]+\z/.freeze
-  validates :item_price, format: {with: VALID_PRICE_REGEX, allow_blank: true}
-  validates :item_price, numericality: {greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
+  validates :item_price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
+
+  validates :image, presence: true, blob: {content_type: :image}
 
   belongs_to :user
-  has_one :order
-  has_one_attached :item_image
+  #has_one :order
+  has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :item_category

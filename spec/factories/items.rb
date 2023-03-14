@@ -10,6 +10,6 @@ FactoryBot.define do
     item_price                  {"1000"}
     association :user
 
-    Rack::Test::UploadedFile.new("public/images/test_image.png", "image/png")
+    image {Rack::Test::UploadedFile.new("public/images/test_image.png", "image/png")}
   end
 end
