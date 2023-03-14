@@ -21,4 +21,7 @@ class User < ApplicationRecord
   VALID_KANA_REGEX = /\A[ァ-ヴー]+\z/u.freeze
   validates :last_name_kana, format: { with: VALID_KANA_REGEX, allow_blank: true }
   validates :first_name_kana, format: { with: VALID_KANA_REGEX, allow_blank: true }
+
+  has_many :items
+  has_many :orders
 end
