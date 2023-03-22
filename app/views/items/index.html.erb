@@ -129,7 +129,7 @@
     <ul class='item-lists'>
 
       <%# 商品詳細表示機能 %>
-      <% if Item.present? %>
+      <% if @items.present? %>
         <% @items.each do |item| %>
           <li class='list'>
             <%= link_to item_path(item.id) do %>
