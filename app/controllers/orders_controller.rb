@@ -8,13 +8,11 @@ class OrdersController < ApplicationController
     elsif @item.order.present?
       redirect_to root_path
     else
-      @item
       @order_address = OrderAddress.new
     end
   end
 
   def create
-    @item
     @order_address = OrderAddress.new(order_params)
     if @order_address.valid?
       pay_item
