@@ -3,8 +3,14 @@ class OrdersController < ApplicationController
   before_action :item_find, only: [:index, :create]
   
   def index
-    @item
-    @order_address = OrderAddress.new
+    if current_user == @item.user
+      redirect_to root_path
+    elsif @item.order.present?
+      redirect_to root_path
+    else
+      @item
+      @order_address = OrderAddress.new
+    end
   end
 
   def create
