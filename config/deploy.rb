@@ -2,10 +2,10 @@
 lock '3.17.2'
 
 # Capistranoのログの表示に利用する
-set :application, 'memoria'
+set :application, 'furima-38660'
 
 # どのリポジトリからアプリをpullするかを指定する
-set :repo_url,  'git@github.com:yuhorn/memoria.git'
+set :repo_url,  'git@github.com:yuhorn/furima-38660.git'
 
 # ブランチを指定する
 set :branch, "main"
