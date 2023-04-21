@@ -73,6 +73,10 @@
 /* /共通 */
 
 /* 商品画像 */
+.preview-image {
+  width: 100%;
+}
+
 .img-upload {
   display: flex;
   justify-content: space-between;
